@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LoginScreen from '../auth/LoginScreen';
 import RegisterScreen from '../auth/RegisterScreen';
 
 const AuthNavigator = () => {
-  // Navigation logic added in Phase 3
-  return <LoginScreen />;
+  const [isLogin, setIsLogin] = useState(true);
+
+  return isLogin ? (
+    <LoginScreen onSwitch={() => setIsLogin(false)} />
+  ) : (
+    <RegisterScreen onSwitch={() => setIsLogin(true)} />
+  );
 };
 
 export default AuthNavigator;
